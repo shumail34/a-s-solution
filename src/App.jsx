@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 const Home = lazy(() => import('./pages/Home'));
 const Solutions = lazy(() => import('./pages/Solutions'));
@@ -79,6 +80,7 @@ function App() {
         </a>
       </div>
       <SpeedInsights />
+      <Analytics />
     </Router>
   );
 }
