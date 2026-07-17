@@ -1,11 +1,42 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Solutions from './pages/Solutions';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+
+const Home = lazy(() => import('./pages/Home'));
+const Solutions = lazy(() => import('./pages/Solutions'));
+
+const RouteLoader = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '60vh',
+    width: '100%',
+    gap: '15px',
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontSize: '1.2rem',
+    fontFamily: 'sans-serif'
+  }}>
+    <div style={{
+      width: '32px',
+      height: '32px',
+      border: '3px solid rgba(255, 255, 255, 0.1)',
+      borderTop: '3px solid #00d2ff',
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite'
+    }}></div>
+    <span>Loading...</span>
+    <style>{`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}</style>
+  </div>
+);
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -24,10 +55,12 @@ function App() {
         <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
         <main className="content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/solutions" element={<Solutions />} />
-          </Routes>
+          <Suspense fallback={<RouteLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/solutions" element={<Solutions />} />
+            </Routes>
+          </Suspense>
         </main>
 
         <Footer />
