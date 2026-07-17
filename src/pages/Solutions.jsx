@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import sol1 from '../assets/solution1.png';
-import sol2 from '../assets/solution2.png';
-import sol3 from '../assets/solution3.png';
-import sol4 from '../assets/solution4.png';
-import sol5 from '../assets/solution5.png';
+import sol1 from '../assets/solution1.webp';
+import sol2 from '../assets/solution2.webp';
+import sol3 from '../assets/solution3.webp';
+import sol4 from '../assets/solution4.webp';
+import sol5 from '../assets/solution5.webp';
 
 function Solutions() {
   const [expandedCard, setExpandedCard] = useState(null);

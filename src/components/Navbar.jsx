@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 
 function Navbar({ isMenuOpen, setIsMenuOpen }) {
   const location = useLocation();

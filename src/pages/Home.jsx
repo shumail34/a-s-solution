@@ -1,6 +1,37 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
+
+function LazyVideo({ src, ...props }) {
+  const videoRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={isInView ? src : undefined}
+      {...props}
+    />
+  );
+}
 
 function Home() {
   const heroVisualRef = useRef(null);
@@ -92,14 +123,14 @@ function Home() {
             {/* Real Video Integration */}
             <div className="video-card glass-card reveal stagger-1">
               <div className="video-wrapper">
-                <video 
+                <LazyVideo 
                   src="/project-video.mp4" 
                   autoPlay 
                   loop 
                   muted 
                   playsInline
                   controls
-                ></video>
+                ></LazyVideo>
               </div>
               <div className="video-info">
                 <h3>Landing Page Website</h3>
@@ -109,14 +140,14 @@ function Home() {
             
             <div className="video-card glass-card reveal stagger-2">
               <div className="video-wrapper">
-                <video 
+                <LazyVideo 
                   src="/website.mp4" 
                   autoPlay 
                   loop 
                   muted 
                   playsInline
                   controls
-                ></video>
+                ></LazyVideo>
               </div>
               <div className="video-info">
                 <h3>Home Care maintanence services</h3>
@@ -126,14 +157,14 @@ function Home() {
 
             <div className="video-card glass-card reveal stagger-3">
               <div className="video-wrapper">
-                <video 
+                <LazyVideo 
                   src="/health-fitness.mp4" 
                   autoPlay 
                   loop 
                   muted 
                   playsInline
                   controls
-                ></video>
+                ></LazyVideo>
               </div>
               <div className="video-info">
                 <h3>Health & Fitness</h3>
@@ -152,8 +183,8 @@ function Home() {
         <div className="container">
           <div className="team-grid">
             {[
-              { name: "Arslan Khalid", role: "CEO & AI Architect", image: "/ceo.jpeg" },
-              { name: "Muhammad Shumail", role: "CTO & Lead Developer", image: "/cto.jpeg" }
+              { name: "Arslan Khalid", role: "CEO & AI Architect", image: "/ceo.webp" },
+              { name: "Muhammad Shumail", role: "CTO & Lead Developer", image: "/cto.webp" }
             ].map((member, index) => (
               <div key={index} className={`team-card glass-card reveal stagger-${index + 1}`}>
                 <div className="team-image">
