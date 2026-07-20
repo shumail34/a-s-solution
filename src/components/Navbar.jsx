@@ -40,16 +40,11 @@ function Navbar({ isMenuOpen, setIsMenuOpen }) {
               {isHome ? <a href="#about" onClick={handleLinkClick}>About</a> : <Link to="/#about" onClick={handleLinkClick}>About</Link>}
             </li>
             <li className="reveal stagger-5">
-              <a 
-                href="https://wa.me/923104672445" 
-                className="contact-btn" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                onClick={handleLinkClick}
-                style={{ textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
-              >
-                Contact Us
-              </a>
+              {isHome ? (
+                <a href="#contact" className="contact-btn" onClick={handleLinkClick}>Contact Us</a>
+              ) : (
+                <Link to="/#contact" className="contact-btn" onClick={handleLinkClick}>Contact Us</Link>
+              )}
             </li>
           </ul>
         </div>

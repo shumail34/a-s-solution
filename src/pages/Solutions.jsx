@@ -119,7 +119,7 @@ function Solutions() {
                 >
                   <div className="card-image-wrapper">
                     <div className="image-overlay"></div>
-                    <img src={item.image} alt={item.title} />
+                    <img src={item.image} alt={item.title} loading="lazy" width="450" height="200" />
                   </div>
                   <div className="card-content-wrapper">
                     <div className="solution-category">{item.category}</div>
