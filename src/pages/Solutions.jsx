@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import sol1 from '../assets/solution1.webp';
-import sol2 from '../assets/solution2.webp';
-import sol3 from '../assets/solution3.webp';
-import sol4 from '../assets/solution4.webp';
-import sol5 from '../assets/solution5.webp';
 
 function Solutions() {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -34,7 +29,7 @@ function Solutions() {
       desc: "Intelligent digital platforms that go beyond traditional websites, integrating automation and user-focused design.",
       details: "Our AI-powered web applications utilize advanced Large Language Models (LLMs) to provide personalized user experiences. We implement real-time data processing and predictive analytics to ensure your platform stays ahead of the curve. From automated content generation to intelligent chatbots, we build systems that learn and adapt to your users.",
       features: ["Custom LLM Integration", "Predictive Analytics", "Real-time Processing"],
-      image: sol1
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "Business Automation",
@@ -42,7 +37,7 @@ function Solutions() {
       desc: "Engineering autonomous systems that handle inventory, pricing, and customer support automatically.",
       details: "We specialize in end-to-end business process automation. By integrating your ERP, CRM, and communication tools, we eliminate manual bottlenecks. Our systems handle everything from automated invoicing and inventory restocking to AI-driven customer support tickets, allowing your team to focus on strategic growth.",
       features: ["Workflow Automation", "ERP Integration", "AI Support"],
-      image: sol2
+      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "UI/UX Design",
@@ -50,7 +45,7 @@ function Solutions() {
       desc: "User-focused design and digital experiences that resonate with your audience and improve engagement.",
       details: "Design at A&S Solutions is about more than just aesthetics. We conduct deep user research and create interactive prototypes to ensure your product is intuitive and high-converting. Our focus on visual excellence and micro-animations ensures a premium feel that builds brand trust and loyalty.",
       features: ["Interactive Prototyping", "Visual Excellence", "User Research"],
-      image: sol5
+      image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "E-commerce Solutions",
@@ -58,7 +53,7 @@ function Solutions() {
       desc: "Self-optimizing platforms that enhance customer interaction and support long-term business growth.",
       details: "Our e-commerce platforms are built for maximum conversion. We implement dynamic pricing engines, intelligent product recommendations, and seamless checkout flows. With integrated growth analytics and automated marketing triggers, your store becomes a self-optimizing sales machine.",
       features: ["Dynamic Pricing", "Payment Integration", "Growth Analytics"],
-      image: sol3
+      image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "Digital Marketing",
@@ -66,7 +61,7 @@ function Solutions() {
       desc: "Data-driven marketing strategies and Authority growth to scale your digital presence.",
       details: "We leverage big data to drive your marketing success. Our strategies include precision-targeted ad campaigns, social connectivity optimization, and advanced conversion tracking. We focus on measurable growth and high ROI, ensuring every marketing dollar contributes to your bottom line.",
       features: ["Growth Hacking", "Social Connectivity", "Campaign Tracking"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2070"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "SEO Off-Page",
@@ -74,7 +69,7 @@ function Solutions() {
       desc: "Advanced link building and authority growth to dominate search rankings and drive organic traffic.",
       details: "Domain authority is the key to organic dominance. We implement advanced off-page SEO strategies, including high-quality link building, digital PR, and authority growth. Our data-driven approach ensures your site climbs the rankings and maintains its position against competitors.",
       features: ["Link Building", "Authority Growth", "Keyword Dominance"],
-      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&q=80&w=2070"
+      image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "Final Year Projects",
@@ -82,7 +77,7 @@ function Solutions() {
       desc: "Custom Web and Mobile App development for academic excellence and production-grade portfolios.",
       details: "We empower students to graduate with production-ready products. Our academic program provides full-stack implementation support, comprehensive technical documentation, and live demo hosting. We help you build a portfolio that stands out to top-tier employers.",
       features: ["Production-Ready Code", "Technical Docs", "Academic Grade UI"],
-      image: sol4
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200"
     }
   ];
 

@@ -67,7 +67,125 @@ function Home() {
 
   const [activeVideo, setActiveVideo] = useState(null);
   
-  // Contact Form State
+function TransparentVideo({ src, className }) {
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
+
+    let animId;
+    let isVisible = true;
+    let ctx;
+    try {
+      ctx = canvas.getContext('2d', { willReadFrequently: true });
+    } catch (e) {
+      ctx = canvas.getContext('2d');
+    }
+
+    // Auto-pause video processing when scrolled out of view to preserve 60fps scrolling speed
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          video.play().catch(() => {});
+          cancelAnimationFrame(animId);
+          processFrame();
+        } else {
+          video.pause();
+          cancelAnimationFrame(animId);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
+    const processFrame = () => {
+      if (!isVisible) return;
+
+      if (video.videoWidth && video.videoHeight) {
+        // Optimize canvas resolution (480px width) for 13x faster JS processing while CSS scales smoothly
+        const targetWidth = 480;
+        const targetHeight = Math.floor((video.videoHeight / video.videoWidth) * targetWidth);
+
+        if (canvas.width !== targetWidth) {
+          canvas.width = targetWidth;
+          canvas.height = targetHeight;
+        }
+
+        const cropX = video.videoWidth * 0.12;
+        const cropY = video.videoHeight * 0.12;
+        const cropW = video.videoWidth * 0.76;
+        const cropH = video.videoHeight * 0.76;
+
+        ctx.drawImage(video, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
+        const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = frame.data;
+
+        const width = canvas.width;
+        const height = canvas.height;
+
+        for (let y = 0; y < height; y++) {
+          for (let x = 0; x < width; x++) {
+            const i = (y * width + x) * 4;
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            const marginX = Math.min(x, width - x) / (width * 0.18);
+            const marginY = Math.min(y, height - y) / (height * 0.18);
+            const edgeAlpha = Math.max(0, Math.min(1, Math.min(marginX, marginY)));
+
+            if (brightness < 50) {
+              data[i + 3] = 0;
+            } else if (brightness < 85) {
+              const alpha = Math.floor(((brightness - 50) / 35) * 255);
+              data[i + 3] = Math.floor(alpha * edgeAlpha);
+            } else {
+              data[i + 3] = Math.floor(255 * edgeAlpha);
+            }
+          }
+        }
+
+        ctx.putImageData(frame, 0, 0);
+      }
+      animId = requestAnimationFrame(processFrame);
+    };
+
+    const handlePlay = () => {
+      cancelAnimationFrame(animId);
+      processFrame();
+    };
+
+    video.addEventListener('play', handlePlay);
+
+    return () => {
+      observer.disconnect();
+      video.removeEventListener('play', handlePlay);
+      cancelAnimationFrame(animId);
+    };
+  }, [src]);
+
+  return (
+    <>
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', width: '1px', height: '1px' }}
+      />
+      <canvas ref={canvasRef} className={className} />
+    </>
+  );
+}
+
+// Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [formStatus, setFormStatus] = useState({ loading: false, success: false, error: null });
 
@@ -98,7 +216,7 @@ function Home() {
       title: "Attari Solar System",
       subtitle: "Modern Solar Solutions Landing Page",
       desc: "A modern, responsive landing page for a solar energy solutions provider in Pakistan. Designed mobile-first with high performance, SEO optimization, and a strong WhatsApp call-to-action to generate high-converting solar leads.",
-      techStack: ["HTML5", "CSS3", "JavaScript", "SEO Friendly", "Responsive Design"],
+      techStack: ["HTML5", "CSS3", "JavaScript", "SEO", "Responsive"],
       videoSrc: "/project-video.mp4",
       liveDemo: "https://attarisolarsystem.store/"
     },
@@ -107,7 +225,7 @@ function Home() {
       title: "HomeCare Market",
       subtitle: "AI Home Maintenance Platform",
       desc: "A smart marketplace connecting clients with verified plumbers, cleaners, and electricians. Supports web and mobile, and features an AI chatbot recommendation engine, role-based access, and secure booking.",
-      techStack: ["React", "Django", "Flutter", "React Native", "SQLite3", "AI Chatbot"],
+      techStack: ["React", "Django", "Flutter", "SQLite3", "AI Chatbot"],
       videoSrc: "/website.mp4",
       liveDemo: "https://homecare-market.vercel.app/"
     },
@@ -116,7 +234,7 @@ function Home() {
       title: "Eloviax",
       subtitle: "Premium E-commerce Salt Lamps Showroom",
       desc: "A top-quality e-commerce showroom for Himalayan salt lamps. Built with a luxury dark mode, cinematic scroll animations (GSAP & Lenis), search-optimized (SEO) product catalog, Web3Forms contact, and WhatsApp integration.",
-      techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Framer Motion", "GSAP", "Lenis"],
+      techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "GSAP"],
       videoSrc: "/eloviax.mp4",
       liveDemo: "https://eloviax.com/"
     },
@@ -125,15 +243,42 @@ function Home() {
       title: "OutreachPro",
       subtitle: "Email Automation System",
       desc: "A full-stack SaaS platform for cold email outreach, lead generation, and campaign management. Supports custom SMTP campaigns, lead verification, tracking analytics, JWT auth, background queues, and billing.",
-      techStack: ["Next.js", "Tailwind CSS", "Django REST", "PostgreSQL", "Nodemailer", "JWT Auth"],
+      techStack: ["Next.js", "Django REST", "PostgreSQL", "Nodemailer", "JWT Auth"],
       videoSrc: "/outreachpro.mp4",
       liveDemo: "https://email-automation-system-omega.vercel.app/"
+    },
+    {
+      id: "estatepro",
+      title: "EstatePro Hub",
+      subtitle: "SaaS Platform for real estate",
+      desc: "EstatePro Hub is a modern, full-stack real estate platform connecting buyers, sellers, and administrators. Buyers can search, filter, and save favorite properties while submitting inquiries. Sellers can create listings, manage leads, and view property performance analytics. Admins maintain platform control with user management, listing moderation, and system-wide insights. Designed with a high-performance React UI and robust Express REST API, it delivers a seamless real estate experience.",
+      techStack: ["React", "Node.js", "PostgreSQL", "Express REST", "Serverless"],
+      videoSrc: "/estatepro.mp4",
+      liveDemo: "https://estatepro-hub.vercel.app/"
+    },
+    {
+      id: "meta-ads",
+      title: "Meta Ads Campaign Results",
+      subtitle: "Data-Driven Marketing & Lead Generation",
+      desc: "An overview of our high-converting Meta Ads campaigns, showcasing our ability to optimize ad spend, generate qualified leads, and significantly scale business revenue through targeted social media marketing and advanced analytics.",
+      techStack: ["Meta Ads Manager", "Data Analytics", "Lead Gen", "ROI Optimization"],
+      videoSrc: "/meta-ads.mp4"
     }
   ];
 
   return (
     <>
       <header className="hero">
+        <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
+          <div className="sphere-glow"></div>
+          <div className="hero-video-container">
+            <TransparentVideo 
+              src="/hero-black-bg.mp4" 
+              className="hero-video"
+            />
+          </div>
+        </div>
+
         <div className="container hero-wrapper">
           <div className="hero-content">
             <div className="badge reveal">Future of Digital Systems</div>
@@ -148,10 +293,6 @@ function Home() {
               <Link to="/solutions" className="primary-btn pulse-hover">Explore Our Solutions</Link>
               <a href="#work" className="secondary-btn">View Work</a>
             </div>
-          </div>
-          <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
-            <div className="sphere-glow"></div>
-            <img src={logo} alt="Halftone Sphere" className="floating-logo" />
           </div>
         </div>
       </header>
@@ -213,9 +354,11 @@ function Home() {
                   <p>{project.desc}</p>
                   
                   <div className="project-actions">
-                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="action-link">
-                      Live Demo ↗
-                    </a>
+                    {project.liveDemo && (
+                      <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="action-link">
+                        Live Demo ↗
+                      </a>
+                    )}
                     <button className="action-btn" onClick={() => setActiveVideo(project.videoSrc)}>
                       <span className="play-icon-small">▶</span> Watch Video
                     </button>
