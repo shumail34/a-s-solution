@@ -38,11 +38,12 @@ function Home() {
   const heroVisualRef = useRef(null);
 
   useEffect(() => {
-    const observerOptions = { threshold: 0.1 };
+    const observerOptions = { rootMargin: '300px 0px 300px 0px', threshold: 0.01 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -76,6 +77,9 @@ function TransparentVideo({ src, className }) {
     const canvas = canvasRef.current;
     if (!video || !canvas) return;
 
+    // Speed up video animation playback rate to 1.6x for energetic, modern motion
+    video.playbackRate = 1.6;
+
     let animId;
     let isVisible = true;
     let ctx;
@@ -85,11 +89,16 @@ function TransparentVideo({ src, className }) {
       ctx = canvas.getContext('2d');
     }
 
-    // Auto-pause video processing when scrolled out of view to preserve 60fps scrolling speed
+    if (ctx) {
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
         if (isVisible) {
+          video.playbackRate = 1.6;
           video.play().catch(() => {});
           cancelAnimationFrame(animId);
           processFrame();
@@ -106,19 +115,16 @@ function TransparentVideo({ src, className }) {
       if (!isVisible) return;
 
       if (video.videoWidth && video.videoHeight) {
-        // Optimize canvas resolution (480px width) for 13x faster JS processing while CSS scales smoothly
-        const targetWidth = 480;
-        const targetHeight = Math.floor((video.videoHeight / video.videoWidth) * targetWidth);
-
-        if (canvas.width !== targetWidth) {
-          canvas.width = targetWidth;
-          canvas.height = targetHeight;
+        // Full native video resolution (zero pixelation, razor-sharp 4K/1080p quality)
+        if (canvas.width !== video.videoWidth) {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
         }
 
-        const cropX = video.videoWidth * 0.12;
-        const cropY = video.videoHeight * 0.12;
-        const cropW = video.videoWidth * 0.76;
-        const cropH = video.videoHeight * 0.76;
+        const cropX = video.videoWidth * 0.10;
+        const cropY = video.videoHeight * 0.10;
+        const cropW = video.videoWidth * 0.80;
+        const cropH = video.videoHeight * 0.80;
 
         ctx.drawImage(video, cropX, cropY, cropW, cropH, 0, 0, canvas.width, canvas.height);
         const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -135,14 +141,14 @@ function TransparentVideo({ src, className }) {
             const b = data[i + 2];
             const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
 
-            const marginX = Math.min(x, width - x) / (width * 0.18);
-            const marginY = Math.min(y, height - y) / (height * 0.18);
+            const marginX = Math.min(x, width - x) / (width * 0.15);
+            const marginY = Math.min(y, height - y) / (height * 0.15);
             const edgeAlpha = Math.max(0, Math.min(1, Math.min(marginX, marginY)));
 
-            if (brightness < 50) {
+            if (brightness < 45) {
               data[i + 3] = 0;
-            } else if (brightness < 85) {
-              const alpha = Math.floor(((brightness - 50) / 35) * 255);
+            } else if (brightness < 80) {
+              const alpha = Math.floor(((brightness - 45) / 35) * 255);
               data[i + 3] = Math.floor(alpha * edgeAlpha);
             } else {
               data[i + 3] = Math.floor(255 * edgeAlpha);
@@ -156,6 +162,7 @@ function TransparentVideo({ src, className }) {
     };
 
     const handlePlay = () => {
+      video.playbackRate = 1.6;
       cancelAnimationFrame(animId);
       processFrame();
     };
@@ -182,6 +189,28 @@ function TransparentVideo({ src, className }) {
       />
       <canvas ref={canvasRef} className={className} />
     </>
+  );
+}
+
+function NativeHeroVideo({ src, className }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.6;
+    }
+  }, []);
+
+  return (
+    <video 
+      ref={videoRef}
+      src={src} 
+      autoPlay 
+      loop 
+      muted 
+      playsInline 
+      className={className}
+    />
   );
 }
 
@@ -272,7 +301,7 @@ function TransparentVideo({ src, className }) {
         <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
           <div className="sphere-glow"></div>
           <div className="hero-video-container">
-            <TransparentVideo 
+            <NativeHeroVideo 
               src="/hero-black-bg.mp4" 
               className="hero-video"
             />

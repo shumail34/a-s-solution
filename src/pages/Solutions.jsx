@@ -4,11 +4,12 @@ function Solutions() {
   const [expandedCard, setExpandedCard] = useState(null);
 
   useEffect(() => {
-    const observerOptions = { threshold: 0.1 };
+    const observerOptions = { rootMargin: '300px 0px 300px 0px', threshold: 0.01 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
