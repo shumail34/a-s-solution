@@ -1,15 +1,19 @@
 :root {
-  --primary: #00f2fe;
-  --secondary: #4facfe;
-  --bg: #07090e;
-  --card-bg: rgba(13, 18, 30, 0.65);
-  --text: #ffffff;
-  --text-dim: rgba(255, 255, 255, 0.75);
-  --border: rgba(0, 242, 254, 0.2);
-  --glass: rgba(13, 18, 30, 0.65);
-  --glass-border: rgba(0, 242, 254, 0.18);
+  --primary: #6D8196;                  /* Slate Steel Blue */
+  --secondary: #CBCBCB;                /* Silver Neutral */
+  --cream: #FFFFE3;                    /* Warm Champagne Cream */
+  --charcoal: #4A4A4A;                 /* Deep Slate Charcoal */
+  
+  --bg: #16181d;                       /* Base Dark Charcoal Background */
+  --card-bg: rgba(74, 74, 74, 0.35);   /* Glass card background */
+  --text: #FFFFE3;                     /* Warm Cream text accent */
+  --text-main: #f4f5f7;                /* Body main text */
+  --text-dim: #CBCBCB;                  /* Silver Gray secondary text */
+  --border: rgba(109, 129, 150, 0.35); /* Steel Blue Border */
+  --glass: rgba(74, 74, 74, 0.35);
+  --glass-border: rgba(109, 129, 150, 0.28);
   --font-main: 'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --accent-glow: rgba(0, 242, 254, 0.25);
+  --accent-glow: rgba(109, 129, 150, 0.35);
 }
 
 * {
@@ -20,7 +24,7 @@
 
 body {
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--text-main);
   font-family: var(--font-main);
   line-height: 1.6;
   overflow-x: hidden;
@@ -61,13 +65,13 @@ h1, h2, h3 {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 242, 254, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(109, 129, 150, 0.35), transparent 70%);
   opacity: 0.6;
   animation: move 20s infinite alternate ease-in-out;
 }
 
 .blob:nth-child(2) {
-  background: radial-gradient(circle, rgba(79, 172, 254, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 227, 0.18), transparent 70%);
   width: 700px;
   height: 700px;
   right: -100px;
@@ -76,7 +80,7 @@ h1, h2, h3 {
 }
 
 .blob:nth-child(3) {
-  background: radial-gradient(circle, rgba(0, 242, 254, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(74, 74, 74, 0.45), transparent 70%);
   width: 500px;
   height: 500px;
   left: -50px;
@@ -123,7 +127,7 @@ section {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, #FFFFE3 0%, #6D8196 60%, #CBCBCB 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
