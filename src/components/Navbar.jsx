@@ -12,7 +12,7 @@ function Navbar({ isMenuOpen, setIsMenuOpen }) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -24,7 +24,7 @@ function Navbar({ isMenuOpen, setIsMenuOpen }) {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-active' : ''}`}>
       <div className="nav-content">
         <Link to="/" className="logo-container reveal stagger-1" onClick={handleLinkClick}>
-          <img src={logo} alt="A&S Solution Logo" className="nav-logo" />
+          <img src={logo} alt="A&S Solution Logo" className="nav-logo" width="36" height="36" />
           <span className="brand-name">A&S Solution</span>
         </Link>
         

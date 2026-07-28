@@ -50,16 +50,24 @@ function Home() {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     
+    let ticking = false;
     const handleMouseMove = (e) => {
-      if (!heroVisualRef.current) return;
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      const x = (clientX / innerWidth - 0.5) * 30;
-      const y = (clientY / innerHeight - 0.5) * 30;
-      heroVisualRef.current.style.transform = `translate(${x}px, ${y}px)`;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (heroVisualRef.current) {
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
+            const x = (clientX / innerWidth - 0.5) * 30;
+            const y = (clientY / innerHeight - 0.5) * 30;
+            heroVisualRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       observer.disconnect();
       window.removeEventListener('mousemove', handleMouseMove);
@@ -204,11 +212,14 @@ function NativeHeroVideo({ src, className }) {
       video.play().catch(() => {});
     };
 
-    attemptPlay();
-    window.addEventListener('touchstart', attemptPlay, { once: true });
-    window.addEventListener('click', attemptPlay, { once: true });
+    // Defer initial video play slightly to let HTML/CSS paint FCP and LCP instantly
+    const timer = setTimeout(attemptPlay, 100);
+
+    window.addEventListener('touchstart', attemptPlay, { once: true, passive: true });
+    window.addEventListener('click', attemptPlay, { once: true, passive: true });
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('touchstart', attemptPlay);
       window.removeEventListener('click', attemptPlay);
     };
@@ -222,7 +233,7 @@ function NativeHeroVideo({ src, className }) {
       loop 
       muted 
       playsInline
-      preload="auto" 
+      preload="metadata" 
       className={className}
     />
   );
