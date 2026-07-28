@@ -317,7 +317,7 @@ function NativeHeroVideo({ src, className }) {
           <div className="sphere-glow"></div>
           <div className="hero-video-container">
             <NativeHeroVideo 
-              src="/hero-motion-4k.mp4" 
+              src="/hero-black-bg.mp4" 
               className="hero-video"
             />
           </div>
