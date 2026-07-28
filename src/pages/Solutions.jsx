@@ -25,12 +25,20 @@ function Solutions() {
 
   const solutions = [
     {
-      title: "AI-Powered Web Apps",
-      category: "AI & Web",
-      desc: "Intelligent digital platforms that go beyond traditional websites, integrating automation and user-focused design.",
-      details: "Our AI-powered web applications utilize advanced Large Language Models (LLMs) to provide personalized user experiences. We implement real-time data processing and predictive analytics to ensure your platform stays ahead of the curve. From automated content generation to intelligent chatbots, we build systems that learn and adapt to your users.",
-      features: ["Custom LLM Integration", "Predictive Analytics", "Real-time Processing"],
+      title: "Web Development",
+      category: "Development",
+      desc: "High-performance, responsive web applications built with modern frameworks and scalable architecture.",
+      details: "We craft custom web applications tailored to your business needs. Using modern technologies like React, Next.js, and Node.js, we build fast, secure, and search-optimized platforms designed for high conversion and seamless user experience.",
+      features: ["Custom Architecture", "SEO & Performance", "Scalable Infrastructure"],
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200"
+    },
+    {
+      title: "AI Integration",
+      category: "Artificial Intelligence",
+      desc: "Seamless integration of LLMs, AI chatbots, and predictive analytics into your software ecosystem.",
+      details: "Empower your business with cutting-edge artificial intelligence. We integrate Large Language Models (LLMs), automated AI customer support agents, and predictive data analytics directly into your web applications and workflows to automate tasks and drive growth.",
+      features: ["Custom LLM Integration", "Predictive Analytics", "AI Chatbots & Agents"],
+      image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=1200"
     },
     {
       title: "Business Automation",

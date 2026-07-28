@@ -196,10 +196,23 @@ function NativeHeroVideo({ src, className }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.6;
-    }
-  }, []);
+    const video = videoRef.current;
+    if (!video) return;
+    video.playbackRate = 1.1;
+
+    const attemptPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    attemptPlay();
+    window.addEventListener('touchstart', attemptPlay, { once: true });
+    window.addEventListener('click', attemptPlay, { once: true });
+
+    return () => {
+      window.removeEventListener('touchstart', attemptPlay);
+      window.removeEventListener('click', attemptPlay);
+    };
+  }, [src]);
 
   return (
     <video 
@@ -208,7 +221,8 @@ function NativeHeroVideo({ src, className }) {
       autoPlay 
       loop 
       muted 
-      playsInline 
+      playsInline
+      preload="auto" 
       className={className}
     />
   );
@@ -302,7 +316,7 @@ function NativeHeroVideo({ src, className }) {
           <div className="sphere-glow"></div>
           <div className="hero-video-container">
             <NativeHeroVideo 
-              src="/hero-black-bg.mp4" 
+              src="/hero-motion-4k.mp4" 
               className="hero-video"
             />
           </div>
@@ -315,7 +329,7 @@ function NativeHeroVideo({ src, className }) {
               Build. <span className="gradient-text animated-gradient">Automate.</span> Scale.
             </h1>
             <p className="hero-subtitle reveal stagger-2">
-              A&S Solutions is a technology-driven agency specializing in AI-powered web development 
+              A&S Solutions is a technology-driven agency specializing in Web Development, AI Integration, 
               and business automation systems.
             </p>
             <div className="hero-actions reveal stagger-3">
@@ -333,7 +347,8 @@ function NativeHeroVideo({ src, className }) {
         </div>
         <div className="services-grid">
           {[
-            { title: "AI-Powered Web Apps", desc: "Intelligent digital platforms that go beyond traditional websites.", icon: "🤖" },
+            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", icon: "💻" },
+            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", icon: "🤖" },
             { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", icon: "⚡" },
             { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", icon: "🎨" },
             { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", icon: "🛒" },
