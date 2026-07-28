@@ -243,7 +243,8 @@ function NativeHeroVideo({ src, className }) {
         body: JSON.stringify(formData),
       });
       
-      if (!res.ok) throw new Error('Failed to send message. Please try again.');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.message || 'Failed to send message. Please try again.');
       
       setFormStatus({ loading: false, success: true, error: null });
       setFormData({ name: '', email: '', subject: '', message: '' });
