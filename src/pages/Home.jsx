@@ -202,33 +202,40 @@ function TransparentVideo({ src, className }) {
 
 function NativeHeroVideo({ src, className }) {
   const videoRef = useRef(null);
+  const [shouldPlay, setShouldPlay] = useState(false);
 
   useEffect(() => {
+    const loadTimer = setTimeout(() => {
+      setShouldPlay(true);
+    }, 350);
+
+    return () => clearTimeout(loadTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldPlay) return;
     const video = videoRef.current;
     if (!video) return;
-    video.playbackRate = 1.1;
 
+    video.playbackRate = 1.1;
     const attemptPlay = () => {
       video.play().catch(() => {});
     };
 
-    // Defer initial video play slightly to let HTML/CSS paint FCP and LCP instantly
-    const timer = setTimeout(attemptPlay, 100);
-
+    attemptPlay();
     window.addEventListener('touchstart', attemptPlay, { once: true, passive: true });
     window.addEventListener('click', attemptPlay, { once: true, passive: true });
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('touchstart', attemptPlay);
       window.removeEventListener('click', attemptPlay);
     };
-  }, [src]);
+  }, [shouldPlay, src]);
 
   return (
     <video 
       ref={videoRef}
-      src={src} 
+      src={shouldPlay ? src : undefined} 
       autoPlay 
       loop 
       muted 

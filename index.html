@@ -13,8 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
-  <link rel="preload" as="video" href="/hero-black-bg.mp4" type="video/mp4" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
 
   <!-- Primary Meta Tags -->
   <title>A&S Solutions | Web Development, AI Integration & Business Automation</title>
@@ -63,23 +62,28 @@
     }
   </script>
 
-  <!-- Meta Pixel Code -->
+  <!-- Deferred Meta Pixel Code for Maximum Web Vitals Performance -->
   <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1030079069425876');
-    fbq('track', 'PageView');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        !function (f, b, e, v, n, t, s) {
+          if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          };
+          if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+          n.queue = []; t = b.createElement(e); t.async = !0;
+          t.src = v; s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        if (window.fbq) {
+          fbq('init', '1030079069425876');
+          fbq('track', 'PageView');
+          fbq('track', 'ViewContent', { value: 'top', currency: 'Euro', content_ids: '1', content_type: 'every' });
+        }
+      }, 1200);
+    });
   </script>
-  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -88,13 +92,4 @@
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
-<script>
-  fbq('track', 'ViewContent', {
-    value: top,
-    currency: 'Euro',
-    content_ids: '1',
-    content_type: 'every',
-  });
-</script>
-
 </html>
