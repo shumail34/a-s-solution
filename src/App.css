@@ -1554,6 +1554,16 @@ html {
     margin-left: auto;
     margin-right: auto;
   }
+  .hero-video {
+    opacity: 0.65;
+    transform: scale(1.05) translateZ(0);
+  }
+  .services-grid,
+  .video-grid,
+  .solutions-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* Solutions Page Styling */
