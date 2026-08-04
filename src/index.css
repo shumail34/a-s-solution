@@ -21,7 +21,7 @@
 body {
   background-color: var(--bg);
   background-image: 
-    linear-gradient(rgba(7, 9, 14, 0.88), rgba(7, 9, 14, 0.95)),
+    linear-gradient(rgba(7, 9, 14, 0.65), rgba(7, 9, 14, 0.75)),
     url('/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png');
   background-size: cover;
   background-position: center;
