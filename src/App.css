@@ -1436,7 +1436,7 @@ html {
   margin-bottom: 10px;
   font-size: 0.8rem;
   color: var(--text-dim);
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
@@ -1455,7 +1455,7 @@ html {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .form-group input:hover,
