@@ -287,6 +287,13 @@ function TransparentVideo({ src, className }) {
       <header className="hero">
         <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
           <div className="sphere-glow"></div>
+          <div className="floating-logos-container">
+            <img src={logo} alt="" className="floating-logo floating-logo-1" />
+            <img src={logo} alt="" className="floating-logo floating-logo-2" />
+            <img src={logo} alt="" className="floating-logo floating-logo-3" />
+            <img src={logo} alt="" className="floating-logo floating-logo-4" />
+            <img src={logo} alt="" className="floating-logo floating-logo-5" />
+          </div>
         </div>
 
         <div className="container hero-wrapper">
