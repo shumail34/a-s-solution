@@ -1,0 +1,217 @@
+.hero-3d-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Keep it behind everything in hero */
+  perspective: 1000px; /* Essential for 3D effect */
+  background: transparent;
+  pointer-events: none; /* Let clicks pass through */
+}
+
+/* Background Atmosphere Layers */
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.animated-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(10, 25, 47, 0.4) 0%, rgba(2, 10, 20, 0.8) 70%, #000000 100%);
+  animation: gradientShift 20s ease-in-out infinite alternate;
+}
+
+.noise-texture {
+  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+}
+
+.radial-lights {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(128, 0, 255, 0.05) 0%, transparent 40%);
+  animation: lightPulse 15s ease-in-out infinite alternate;
+}
+
+/* Particles Layer */
+.hero-particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Cinematic Fog */
+.cinematic-fog {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  z-index: 3;
+}
+
+/* 3D Logo Layer */
+.logo-3d-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%; /* 60-80% of width */
+  max-width: 800px;
+  transform-style: preserve-3d;
+  z-index: 4;
+  margin-top: -5%; /* Center adjustment */
+  
+  /* Initial translation offset so Framer Motion handles it from the center */
+  margin-left: -35%; 
+}
+
+@media (min-width: 1143px) {
+  .logo-3d-wrapper {
+    margin-left: -400px; /* Half of max-width */
+  }
+}
+
+.hero-3d-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Lighting & Bloom */
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.2)) 
+          drop-shadow(0 0 40px rgba(0, 150, 255, 0.1))
+          drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  will-change: transform, opacity, filter;
+}
+
+/* Sub-animations combined on the logo */
+.floating-animation {
+  animation: floating 14s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+}
+
+.breathing-scale {
+  animation: breathing 10s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+}
+
+.opacity-pulse {
+  animation: pulseOpacity 9s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+}
+
+.logo-glow {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, rgba(128, 0, 255, 0.05) 50%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  transform: translateZ(-50px); /* Push glow behind */
+}
+
+.pulsing-glow {
+  animation: pulseGlow 12s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+}
+
+/* Extra Premium Effects */
+.volumetric-rays {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%) translateZ(-100px);
+  background: conic-gradient(from 180deg at 50% 50%, transparent 0deg, rgba(0, 255, 255, 0.02) 45deg, transparent 90deg, rgba(128, 0, 255, 0.02) 135deg, transparent 180deg, rgba(0, 255, 255, 0.02) 225deg, transparent 270deg, rgba(128, 0, 255, 0.02) 315deg, transparent 360deg);
+  animation: spinRays 60s linear infinite;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+.holographic-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.02) 50%);
+  background-size: 100% 4px;
+  animation: scanLines 8s linear infinite;
+  z-index: 5;
+  mix-blend-mode: screen;
+  border-radius: inherit;
+}
+
+/* Keyframes */
+@keyframes floating {
+  0% { transform: translateY(-20px) rotateX(-2deg) rotateY(-3deg); }
+  100% { transform: translateY(20px) rotateX(2deg) rotateY(3deg); }
+}
+
+@keyframes breathing {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulseOpacity {
+  0% { opacity: 0.12; }
+  50% { opacity: 0.18; }
+  100% { opacity: 0.12; }
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: translateZ(-50px) scale(0.9); }
+  100% { opacity: 1; transform: translateZ(-50px) scale(1.1); }
+}
+
+@keyframes spinRays {
+  0% { transform: translate(-50%, -50%) translateZ(-100px) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) translateZ(-100px) rotate(360deg); }
+}
+
+@keyframes scanLines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes lightPulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-3d-wrapper {
+    width: 85%;
+    margin-left: -42.5%;
+  }
+  
+  .hero-3d-logo {
+    opacity: 0.25; /* Slightly higher base opacity for mobile visibility */
+    animation: floatingMobile 14s ease-in-out infinite alternate;
+  }
+  
+  @keyframes floatingMobile {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(10px); }
+  }
+  
+  /* Disable heavy effects on mobile */
+  .volumetric-rays,
+  .holographic-lines {
+    display: none;
+  }
+}

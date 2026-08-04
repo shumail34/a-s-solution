@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.webp';
+import HeroBackground3D from '../components/HeroBackground3D';
 
 function LazyVideo({ src, ...props }) {
   const videoRef = useRef(null);
@@ -285,12 +286,7 @@ function TransparentVideo({ src, className }) {
   return (
     <>
       <header className="hero">
-        <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
-          <div className="sphere-glow"></div>
-          <div className="hero-3d-logo-container">
-            <img src={logo} alt="A&S Solutions 3D Logo" className="hero-3d-logo" />
-          </div>
-        </div>
+        <HeroBackground3D />
 
         <div className="container hero-wrapper">
           <div className="hero-content">
