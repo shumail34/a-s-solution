@@ -1,15 +1,15 @@
 :root {
-  --primary: #00f2fe;
-  --secondary: #4facfe;
-  --bg: #07090e;
-  --card-bg: rgba(13, 18, 30, 0.65);
+  --primary: #C08251;
+  --secondary: #8C5A35;
+  --bg: #151312;
+  --card-bg: rgba(28, 25, 24, 0.65);
   --text: #ffffff;
   --text-dim: rgba(255, 255, 255, 0.75);
-  --border: rgba(0, 242, 254, 0.2);
-  --glass: rgba(13, 18, 30, 0.65);
-  --glass-border: rgba(0, 242, 254, 0.18);
+  --border: rgba(192, 130, 81, 0.2);
+  --glass: rgba(28, 25, 24, 0.65);
+  --glass-border: rgba(192, 130, 81, 0.18);
   --font-main: 'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --accent-glow: rgba(0, 242, 254, 0.25);
+  --accent-glow: rgba(192, 130, 81, 0.25);
 }
 
 * {
@@ -21,7 +21,7 @@
 body {
   background-color: var(--bg);
   background-image: 
-    linear-gradient(rgba(7, 9, 14, 0.65), rgba(7, 9, 14, 0.75)),
+    linear-gradient(rgba(21, 19, 18, 0.65), rgba(21, 19, 18, 0.75)),
     url('/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png');
   background-size: cover;
   background-position: center;
@@ -68,7 +68,7 @@ h1, h2, h3 {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 242, 254, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(192, 130, 81, 0.22), transparent 70%);
   opacity: 0.6;
   animation: move 20s infinite alternate ease-in-out;
 }
@@ -83,7 +83,7 @@ h1, h2, h3 {
 }
 
 .blob:nth-child(3) {
-  background: radial-gradient(circle, rgba(0, 242, 254, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(192, 130, 81, 0.18), transparent 70%);
   width: 500px;
   height: 500px;
   left: -50px;
