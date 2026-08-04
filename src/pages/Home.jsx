@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.webp';
-import HeroBackground3D from '../components/HeroBackground3D';
 
 function LazyVideo({ src, ...props }) {
   const videoRef = useRef(null);
@@ -201,6 +200,52 @@ function TransparentVideo({ src, className }) {
   );
 }
 
+function NativeHeroVideo({ src, className }) {
+  const videoRef = useRef(null);
+  const [shouldPlay, setShouldPlay] = useState(false);
+
+  useEffect(() => {
+    const loadTimer = setTimeout(() => {
+      setShouldPlay(true);
+    }, 350);
+
+    return () => clearTimeout(loadTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldPlay) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.playbackRate = 1.1;
+    const attemptPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    attemptPlay();
+    window.addEventListener('touchstart', attemptPlay, { once: true, passive: true });
+    window.addEventListener('click', attemptPlay, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', attemptPlay);
+      window.removeEventListener('click', attemptPlay);
+    };
+  }, [shouldPlay, src]);
+
+  return (
+    <video 
+      ref={videoRef}
+      src={shouldPlay ? src : undefined} 
+      autoPlay 
+      loop 
+      muted 
+      playsInline
+      preload="metadata" 
+      className={className}
+    />
+  );
+}
+
 // Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [formStatus, setFormStatus] = useState({ loading: false, success: false, error: null });
@@ -286,7 +331,9 @@ function TransparentVideo({ src, className }) {
   return (
     <>
       <header className="hero">
-        <HeroBackground3D />
+        <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
+          <div className="sphere-glow"></div>
+        </div>
 
         <div className="container hero-wrapper">
           <div className="hero-content">

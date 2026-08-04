@@ -20,6 +20,13 @@
 
 body {
   background-color: var(--bg);
+  background-image: 
+    linear-gradient(rgba(7, 9, 14, 0.88), rgba(7, 9, 14, 0.95)),
+    url('/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text);
   font-family: var(--font-main);
   line-height: 1.6;
