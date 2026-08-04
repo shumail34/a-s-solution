@@ -44,8 +44,8 @@ const SplashScreen = () => {
   const [isFading, setIsFading] = React.useState(false);
 
   React.useEffect(() => {
-    const timer1 = setTimeout(() => setIsFading(true), 1500);
-    const timer2 = setTimeout(() => setIsVisible(false), 2000);
+    const timer1 = setTimeout(() => setIsFading(true), 2500);
+    const timer2 = setTimeout(() => setIsVisible(false), 3000);
     return () => { clearTimeout(timer1); clearTimeout(timer2); };
   }, []);
 
@@ -61,6 +61,7 @@ const SplashScreen = () => {
       backgroundColor: 'var(--bg)',
       zIndex: 99999,
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       opacity: isFading ? 0 : 1,
@@ -71,12 +72,39 @@ const SplashScreen = () => {
         src="/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png" 
         alt="A and S Solutions Splash" 
         style={{
-          width: '250px',
-          height: '250px',
+          width: '450px',
+          maxWidth: '85%',
+          height: 'auto',
           objectFit: 'contain',
-          animation: 'pulse 1.5s infinite ease-in-out'
+          animation: 'pulse 1.5s infinite ease-in-out',
+          marginBottom: '40px'
         }} 
       />
+      
+      <div style={{
+        width: '240px',
+        maxWidth: '70%',
+        height: '4px',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        borderRadius: '4px',
+        overflow: 'hidden',
+        position: 'relative'
+      }}>
+        <div style={{
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'var(--primary)',
+          borderRadius: '4px',
+          transformOrigin: 'left',
+          animation: 'loadProgress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards'
+        }}></div>
+      </div>
+      <style>{`
+        @keyframes loadProgress {
+          0% { transform: scaleX(0); }
+          100% { transform: scaleX(1); }
+        }
+      `}</style>
     </div>
   );
 };
