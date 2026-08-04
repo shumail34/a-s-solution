@@ -39,12 +39,55 @@ const RouteLoader = () => (
   </div>
 );
 
+const SplashScreen = () => {
+  const [isVisible, setIsVisible] = React.useState(true);
+  const [isFading, setIsFading] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer1 = setTimeout(() => setIsFading(true), 1500);
+    const timer2 = setTimeout(() => setIsVisible(false), 2000);
+    return () => { clearTimeout(timer1); clearTimeout(timer2); };
+  }, []);
+
+  if (!isVisible) return null;
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'var(--bg)',
+      zIndex: 99999,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      opacity: isFading ? 0 : 1,
+      transition: 'opacity 0.5s ease-in-out',
+      pointerEvents: 'all'
+    }}>
+      <img 
+        src="/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png" 
+        alt="A and S Solutions Splash" 
+        style={{
+          width: '250px',
+          height: '250px',
+          objectFit: 'contain',
+          animation: 'pulse 1.5s infinite ease-in-out'
+        }} 
+      />
+    </div>
+  );
+};
+
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const location = useLocation();
 
   return (
     <div className={`app-container ${isMenuOpen ? 'menu-open' : ''}`}>
+      <SplashScreen />
       <div className="noise"></div>
       <div className="blob-container">
         <div className="blob"></div>
