@@ -78,6 +78,7 @@ h1, h2, h3 {
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .blob {
@@ -85,13 +86,15 @@ h1, h2, h3 {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(192, 130, 81, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(192, 130, 81, 0.22) 0%, transparent 60%);
   opacity: 0.6;
   animation: move 20s infinite alternate ease-in-out;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .blob:nth-child(2) {
-  background: radial-gradient(circle, rgba(79, 172, 254, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(79, 172, 254, 0.2) 0%, transparent 60%);
   width: 700px;
   height: 700px;
   right: -100px;
@@ -100,7 +103,7 @@ h1, h2, h3 {
 }
 
 .blob:nth-child(3) {
-  background: radial-gradient(circle, rgba(192, 130, 81, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(192, 130, 81, 0.18) 0%, transparent 60%);
   width: 500px;
   height: 500px;
   left: -50px;
