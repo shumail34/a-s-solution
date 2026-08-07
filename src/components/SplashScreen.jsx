@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './SplashScreen.css';
-import logo from '../assets/logo.webp';
 
 const SplashScreen = ({ finishLoading }) => {
   const [isFading, setIsFading] = useState(false);
@@ -21,7 +20,7 @@ const SplashScreen = ({ finishLoading }) => {
     <div className={`splash-screen ${isFading ? 'fade-out' : ''}`}>
       <div className="splash-content">
         <div className="splash-logo-container">
-          <img src={logo} alt="A&S Solutions" className="splash-logo" />
+          <img src="/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png" alt="A&S Solutions" className="splash-logo" />
         </div>
         <div className="splash-loader">
           <div className="splash-loader-bar"></div>
