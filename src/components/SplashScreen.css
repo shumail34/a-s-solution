@@ -1,0 +1,84 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Use dynamic height for mobile compatibility */
+  height: 100dvh;
+  background-color: var(--bg);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+  /* Apply subtle grid background */
+  background-image: 
+    linear-gradient(rgba(28, 25, 24, 0.95), rgba(21, 19, 18, 0.98)),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c08251' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.splash-logo-container {
+  position: relative;
+}
+
+.splash-logo {
+  width: 220px;
+  height: auto;
+  animation: pulseLogo 2.5s infinite ease-in-out;
+  filter: drop-shadow(0 0 25px rgba(192, 130, 81, 0.4));
+}
+
+@keyframes pulseLogo {
+  0% { transform: scale(1); filter: drop-shadow(0 0 25px rgba(192, 130, 81, 0.4)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 45px rgba(192, 130, 81, 0.7)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 25px rgba(192, 130, 81, 0.4)); }
+}
+
+.splash-loader {
+  width: 220px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.splash-loader-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 4px;
+  animation: loadingBar 1.5s infinite cubic-bezier(0.65, 0, 0.35, 1);
+  box-shadow: 0 0 10px rgba(192, 130, 81, 0.8);
+}
+
+@keyframes loadingBar {
+  0% { left: -40%; }
+  100% { left: 140%; }
+}
+
+@media (max-width: 768px) {
+  .splash-logo {
+    width: 180px;
+  }
+  .splash-loader {
+    width: 180px;
+  }
+}

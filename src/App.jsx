@@ -39,75 +39,7 @@ const RouteLoader = () => (
   </div>
 );
 
-const SplashScreen = () => {
-  const [isVisible, setIsVisible] = React.useState(true);
-  const [isFading, setIsFading] = React.useState(false);
-
-  React.useEffect(() => {
-    const timer1 = setTimeout(() => setIsFading(true), 2500);
-    const timer2 = setTimeout(() => setIsVisible(false), 3000);
-    return () => { clearTimeout(timer1); clearTimeout(timer2); };
-  }, []);
-
-  if (!isVisible) return null;
-
-  return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: 'var(--bg)',
-      zIndex: 99999,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      opacity: isFading ? 0 : 1,
-      transition: 'opacity 0.5s ease-in-out',
-      pointerEvents: 'all'
-    }}>
-      <img 
-        src="/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png" 
-        alt="A and S Solutions Splash" 
-        style={{
-          width: '450px',
-          maxWidth: '85%',
-          height: 'auto',
-          objectFit: 'contain',
-          animation: 'pulse 1.5s infinite ease-in-out',
-          marginBottom: '40px'
-        }} 
-      />
-      
-      <div style={{
-        width: '240px',
-        maxWidth: '70%',
-        height: '4px',
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-        borderRadius: '4px',
-        overflow: 'hidden',
-        position: 'relative'
-      }}>
-        <div style={{
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'var(--primary)',
-          borderRadius: '4px',
-          transformOrigin: 'left',
-          animation: 'loadProgress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards'
-        }}></div>
-      </div>
-      <style>{`
-        @keyframes loadProgress {
-          0% { transform: scaleX(0); }
-          100% { transform: scaleX(1); }
-        }
-      `}</style>
-    </div>
-  );
-};
+import SplashScreen from './components/SplashScreen';
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -115,7 +47,6 @@ function AppContent() {
 
   return (
     <div className={`app-container ${isMenuOpen ? 'menu-open' : ''}`}>
-      <SplashScreen />
       <div className="noise"></div>
       <div className="blob-container">
         <div className="blob"></div>
@@ -156,8 +87,11 @@ function AppContent() {
 }
 
 function App() {
+  const [loading, setLoading] = React.useState(true);
+
   return (
     <Router>
+      {loading && <SplashScreen finishLoading={() => setLoading(false)} />}
       <AppContent />
     </Router>
   );
