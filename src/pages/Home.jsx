@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Bot, Zap, Palette, ShoppingCart, TrendingUp, Search, GraduationCap } from 'lucide-react';
 import logo from '../assets/logo.webp';
 
 function LazyVideo({ src, ...props }) {
@@ -361,17 +360,19 @@ function NativeHeroVideo({ src, className }) {
         </div>
         <div className="services-grid">
           {[
-            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", icon: <Code2 size={28} color="var(--primary)" /> },
-            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", icon: <Bot size={28} color="var(--primary)" /> },
-            { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", icon: <Zap size={28} color="var(--primary)" /> },
-            { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", icon: <Palette size={28} color="var(--primary)" /> },
-            { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", icon: <ShoppingCart size={28} color="var(--primary)" /> },
-            { title: "Digital Marketing", desc: "Data-driven marketing strategies to scale your presence.", icon: <TrendingUp size={28} color="var(--primary)" /> },
-            { title: "SEO Off-Page", desc: "Link building and authority growth to dominate search.", icon: <Search size={28} color="var(--primary)" /> },
-            { title: "Final Year Projects", desc: "Custom Web and Mobile App development.", icon: <GraduationCap size={28} color="var(--primary)" /> }
+            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=300" },
+            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=300" },
+            { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=300" },
+            { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=300" },
+            { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=300" },
+            { title: "Digital Marketing", desc: "Data-driven marketing strategies to scale your presence.", image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=300" },
+            { title: "SEO Off-Page", desc: "Link building and authority growth to dominate search.", image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=300" },
+            { title: "Final Year Projects", desc: "Custom Web and Mobile App development.", image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=300" }
           ].map((service, index) => (
             <div key={index} className={`service-card glass-card reveal stagger-${(index % 4) + 1}`}>
-              <div className="service-icon">{service.icon}</div>
+              <div className="service-image-container">
+                <img src={service.image} alt={service.title} className="service-image" />
+              </div>
               <h3>{service.title}</h3>
               <p>{service.desc}</p>
             </div>
