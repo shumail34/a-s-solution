@@ -333,7 +333,7 @@ function NativeHeroVideo({ src, className }) {
       <header className="hero">
         <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
           <div className="sphere-glow"></div>
-          <img src="/hero-main.png" alt="A&S Solution AI-Powered" className="hero-main-image" />
+          <img src="/Gemini_Generated_Image_f81rftf81rftf81r-removebg-preview.png" alt="A&S Solution AI-Powered" className="hero-main-image" />
         </div>
 
         <div className="container hero-wrapper">
