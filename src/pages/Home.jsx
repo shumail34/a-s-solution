@@ -313,7 +313,7 @@ function NativeHeroVideo({ src, className }) {
       id: "estatepro",
       title: "EstatePro Hub",
       subtitle: "SaaS Platform for real estate",
-      desc: "EstatePro Hub is a modern, full-stack real estate platform connecting buyers, sellers, and administrators. Buyers can search, filter, and save favorite properties while submitting inquiries. Sellers can create listings, manage leads, and view property performance analytics. Admins maintain platform control with user management, listing moderation, and system-wide insights. Designed with a high-performance React UI and robust Express REST API, it delivers a seamless real estate experience.",
+      desc: "A modern full-stack real estate platform connecting buyers, sellers, and admins. Features advanced property search, lead tracking, listing management, and system-wide moderation—powered by a high-performance React UI and robust Express API.",
       techStack: ["React", "Node.js", "PostgreSQL", "Express REST", "Serverless"],
       videoSrc: "/estatepro.mp4",
       liveDemo: "https://estatepro-hub.vercel.app/"
