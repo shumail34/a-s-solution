@@ -331,9 +331,8 @@ function NativeHeroVideo({ src, className }) {
   return (
     <>
       <header className="hero">
-        <div className="hero-visual reveal stagger-2" ref={heroVisualRef}>
+        <div className="hero-bg-glow">
           <div className="sphere-glow"></div>
-          <img src="/hero-main.png" alt="A&S Solution AI-Powered" className="hero-main-image" />
         </div>
 
         <div className="container hero-wrapper">
@@ -350,6 +349,10 @@ function NativeHeroVideo({ src, className }) {
               <Link to="/solutions" className="primary-btn pulse-hover">Explore Our Solutions</Link>
               <a href="#work" className="secondary-btn">View Work</a>
             </div>
+          </div>
+          
+          <div className="hero-image-wrapper reveal stagger-2" ref={heroVisualRef}>
+            <img src="/hero-main.png" alt="A&S Solution AI-Powered" className="hero-main-image" />
           </div>
         </div>
       </header>
