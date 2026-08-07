@@ -78,7 +78,6 @@ h1, h2, h3 {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  filter: blur(100px);
 }
 
 .blob {
