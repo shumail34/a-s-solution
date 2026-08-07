@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Code2, Bot, Zap, Palette, ShoppingCart, TrendingUp, Search, GraduationCap } from 'lucide-react';
 import logo from '../assets/logo.webp';
 
 function LazyVideo({ src, ...props }) {
@@ -355,19 +356,19 @@ function NativeHeroVideo({ src, className }) {
 
       <section id="services" className="services reveal">
         <div className="section-header reveal">
-          <h2 className="section-title">Core Expertise</h2>
+          <h2 className="section-title">Our Services</h2>
           <p className="section-desc">We deliver systems that improve operational efficiency and support long-term growth.</p>
         </div>
         <div className="services-grid">
           {[
-            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", icon: "💻" },
-            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", icon: "🤖" },
-            { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", icon: "⚡" },
-            { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", icon: "🎨" },
-            { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", icon: "🛒" },
-            { title: "Digital Marketing", desc: "Data-driven marketing strategies to scale your presence.", icon: "📈" },
-            { title: "SEO Off-Page", desc: "Link building and authority growth to dominate search.", icon: "🔍" },
-            { title: "Final Year Projects", desc: "Custom Web and Mobile App development.", icon: "🎓" }
+            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", icon: <Code2 size={28} color="var(--primary)" /> },
+            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", icon: <Bot size={28} color="var(--primary)" /> },
+            { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", icon: <Zap size={28} color="var(--primary)" /> },
+            { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", icon: <Palette size={28} color="var(--primary)" /> },
+            { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", icon: <ShoppingCart size={28} color="var(--primary)" /> },
+            { title: "Digital Marketing", desc: "Data-driven marketing strategies to scale your presence.", icon: <TrendingUp size={28} color="var(--primary)" /> },
+            { title: "SEO Off-Page", desc: "Link building and authority growth to dominate search.", icon: <Search size={28} color="var(--primary)" /> },
+            { title: "Final Year Projects", desc: "Custom Web and Mobile App development.", icon: <GraduationCap size={28} color="var(--primary)" /> }
           ].map((service, index) => (
             <div key={index} className={`service-card glass-card reveal stagger-${(index % 4) + 1}`}>
               <div className="service-icon">{service.icon}</div>
