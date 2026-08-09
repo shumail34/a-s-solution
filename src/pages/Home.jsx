@@ -353,7 +353,9 @@ function NativeHeroVideo({ src, className }) {
           </div>
           
           <div className="hero-image-wrapper reveal stagger-2" ref={heroVisualRef}>
-            <img src="/hero-main.png" alt="A&S Solution AI-Powered" className="hero-main-image" />
+            <div className="globe-float-container">
+              <img src="/hero-main.png" alt="A&S Solution AI-Powered" className="hero-main-image" />
+            </div>
           </div>
         </div>
       </header>
