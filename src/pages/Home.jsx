@@ -478,7 +478,7 @@ function NativeHeroVideo({ src, className }) {
         <div className="container">
           <div className="team-grid">
             {[
-              { name: "Arslan Khalid", role: "CEO & AI Architect", image: "/ceo-office.webp", link: "https://arslans-universe.vercel.app/" },
+              { name: "Arslan Khalid", role: "CEO & AI Architect", image: "/ceo-executive.webp", link: "https://arslans-universe.vercel.app/" },
               { name: "Muhammad Shumail", role: "CTO & Lead Developer", image: "/cto.webp", link: "https://portfolio-wn9o.vercel.app/" }
             ].map((member, index) => (
               <a href={member.link} target="_blank" rel="noopener noreferrer" key={index} className={`team-card glass-card reveal stagger-${index + 1}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
