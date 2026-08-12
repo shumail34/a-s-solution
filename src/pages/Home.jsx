@@ -369,7 +369,7 @@ function NativeHeroVideo({ src, className }) {
           <div className="hero-image-wrapper reveal stagger-2" ref={heroVisualRef}>
             <div className="globe-float-container">
               <div className="hero-logo-lockup">
-                <img src="/hero-globe-transparent.png" alt="A&S Solution Globe" className="hero-main-globe" />
+                <img src="/hero-globe-transparent.webp" alt="A&S Solution Globe" className="hero-main-globe" width="320" height="320" fetchPriority="high" decoding="async" />
                 <div className="hero-logo-text">
                   <span className="hero-logo-line1">A&S solution</span>
                 </div>
@@ -386,18 +386,18 @@ function NativeHeroVideo({ src, className }) {
         </div>
         <div className="services-grid">
           {[
-            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", image: "/services/web_dev.png" },
-            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", image: "/services/ai_integration.png" },
-            { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", image: "/services/business_auto.png" },
-            { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", image: "/services/ui_ux.png" },
-            { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", image: "/services/ecommerce.png" },
-            { title: "Digital Marketing", desc: "Data-driven marketing strategies to scale your presence.", image: "/services/marketing.png" },
-            { title: "SEO Off-Page", desc: "Link building and authority growth to dominate search.", image: "/services/seo.png" },
-            { title: "Final Year Projects", desc: "Custom Web and Mobile App development.", image: "/services/projects.png" }
+            { title: "Web Development", desc: "High-performance, responsive web applications built with modern frameworks.", image: "/services/web_dev.webp" },
+            { title: "AI Integration", desc: "Seamless LLM, chatbot, and predictive AI workflow integration for your business.", image: "/services/ai_integration.webp" },
+            { title: "Business Automation", desc: "Enhance customer interaction and improve operational efficiency.", image: "/services/business_auto.webp" },
+            { title: "UI/UX Design", desc: "User-focused design and digital experiences that resonate.", image: "/services/ui_ux.webp" },
+            { title: "E-commerce Support", desc: "Full-stack e-commerce solutions and optimization.", image: "/services/ecommerce.webp" },
+            { title: "Digital Marketing", desc: "Data-driven marketing strategies to scale your presence.", image: "/services/marketing.webp" },
+            { title: "SEO Off-Page", desc: "Link building and authority growth to dominate search.", image: "/services/seo.webp" },
+            { title: "Final Year Projects", desc: "Custom Web and Mobile App development.", image: "/services/projects.webp" }
           ].map((service, index) => (
             <div key={index} className={`service-card glass-card reveal stagger-${(index % 4) + 1}`}>
               <div className="service-image-container">
-                <img src={service.image} alt={service.title} className="service-image" />
+                <img src={service.image} alt={service.title} className="service-image" width="90" height="90" loading="lazy" decoding="async" />
               </div>
               <h3>{service.title}</h3>
               <p>{service.desc}</p>

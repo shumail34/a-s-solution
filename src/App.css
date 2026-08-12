@@ -286,6 +286,7 @@ html {
   width: 100%;
   max-width: 320px;
   height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
   border-radius: 50%;
   clip-path: circle(47% at 50% 50%);
@@ -676,6 +677,7 @@ html {
   margin-bottom: 24px;
   width: 90px;
   height: 90px;
+  aspect-ratio: 1 / 1;
   border-radius: 20px;
   overflow: hidden;
   border: 2px solid rgba(192, 130, 81, 0.3);

@@ -48,7 +48,7 @@ function Solutions() {
       desc: "High-performance, responsive web applications built with modern frameworks and scalable architecture.",
       details: "We craft custom web applications tailored to your business needs. Using modern technologies like React, Next.js, and Node.js, we build fast, secure, and search-optimized platforms designed for high conversion and seamless user experience.",
       features: ["Custom Architecture", "SEO & Performance", "Scalable Infrastructure"],
-      image: "/services/web_dev.png"
+      image: "/services/web_dev.webp"
     },
     {
       title: "AI Integration",
@@ -56,7 +56,7 @@ function Solutions() {
       desc: "Seamless integration of LLMs, AI chatbots, and predictive analytics into your software ecosystem.",
       details: "Empower your business with cutting-edge artificial intelligence. We integrate Large Language Models (LLMs), automated AI customer support agents, and predictive data analytics directly into your web applications and workflows to automate tasks and drive growth.",
       features: ["Custom LLM Integration", "Predictive Analytics", "AI Chatbots & Agents"],
-      image: "/services/ai_integration.png"
+      image: "/services/ai_integration.webp"
     },
     {
       title: "Business Automation",
@@ -64,7 +64,7 @@ function Solutions() {
       desc: "Engineering autonomous systems that handle inventory, pricing, and customer support automatically.",
       details: "We specialize in end-to-end business process automation. By integrating your ERP, CRM, and communication tools, we eliminate manual bottlenecks. Our systems handle everything from automated invoicing and inventory restocking to AI-driven customer support tickets, allowing your team to focus on strategic growth.",
       features: ["Workflow Automation", "ERP Integration", "AI Support"],
-      image: "/services/business_auto.png"
+      image: "/services/business_auto.webp"
     },
     {
       title: "UI/UX Design",
@@ -72,7 +72,7 @@ function Solutions() {
       desc: "User-focused design and digital experiences that resonate with your audience and improve engagement.",
       details: "Design at A&S Solutions is about more than just aesthetics. We conduct deep user research and create interactive prototypes to ensure your product is intuitive and high-converting. Our focus on visual excellence and micro-animations ensures a premium feel that builds brand trust and loyalty.",
       features: ["Interactive Prototyping", "Visual Excellence", "User Research"],
-      image: "/services/ui_ux.png"
+      image: "/services/ui_ux.webp"
     },
     {
       title: "E-commerce Solutions",
@@ -80,7 +80,7 @@ function Solutions() {
       desc: "Self-optimizing platforms that enhance customer interaction and support long-term business growth.",
       details: "Our e-commerce platforms are built for maximum conversion. We implement dynamic pricing engines, intelligent product recommendations, and seamless checkout flows. With integrated growth analytics and automated marketing triggers, your store becomes a self-optimizing sales machine.",
       features: ["Dynamic Pricing", "Payment Integration", "Growth Analytics"],
-      image: "/services/ecommerce.png"
+      image: "/services/ecommerce.webp"
     },
     {
       title: "Digital Marketing",
@@ -88,7 +88,7 @@ function Solutions() {
       desc: "Data-driven marketing strategies and Authority growth to scale your digital presence.",
       details: "We leverage big data to drive your marketing success. Our strategies include precision-targeted ad campaigns, social connectivity optimization, and advanced conversion tracking. We focus on measurable growth and high ROI, ensuring every marketing dollar contributes to your bottom line.",
       features: ["Growth Hacking", "Social Connectivity", "Campaign Tracking"],
-      image: "/services/marketing.png"
+      image: "/services/marketing.webp"
     },
     {
       title: "SEO Off-Page",
@@ -96,7 +96,7 @@ function Solutions() {
       desc: "Advanced link building and authority growth to dominate search rankings and drive organic traffic.",
       details: "Domain authority is the key to organic dominance. We implement advanced off-page SEO strategies, including high-quality link building, digital PR, and authority growth. Our data-driven approach ensures your site climbs the rankings and maintains its position against competitors.",
       features: ["Link Building", "Authority Growth", "Keyword Dominance"],
-      image: "/services/seo.png"
+      image: "/services/seo.webp"
     },
     {
       title: "Final Year Projects",
@@ -104,7 +104,7 @@ function Solutions() {
       desc: "Custom Web and Mobile App development for academic excellence and production-grade portfolios.",
       details: "We empower students to graduate with production-ready products. Our academic program provides full-stack implementation support, comprehensive technical documentation, and live demo hosting. We help you build a portfolio that stands out to top-tier employers.",
       features: ["Production-Ready Code", "Technical Docs", "Academic Grade UI"],
-      image: "/services/projects.png"
+      image: "/services/projects.webp"
     }
   ];
 
