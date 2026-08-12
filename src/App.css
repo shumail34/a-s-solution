@@ -353,6 +353,9 @@ html {
     margin-top: -10px;
     padding-right: 0;
   }
+  .globe-float-container {
+    justify-content: center;
+  }
   .hero-logo-lockup {
     flex-direction: column;
     text-align: center;
@@ -362,10 +365,13 @@ html {
     align-items: center;
   }
   .hero-logo-line1 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
+  }
+  .hero-logo-line2 {
+    font-size: 1.1rem;
   }
   .hero-main-globe {
-    max-width: 180px;
+    max-width: 250px;
     opacity: 0.95;
   }
 }
