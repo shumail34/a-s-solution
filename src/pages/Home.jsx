@@ -38,8 +38,8 @@ function Home() {
   const heroVisualRef = useRef(null);
 
   useEffect(() => {
-    const observerOptions = { rootMargin: '0px 0px 0px 0px', threshold: 0.05 };
-    const observer = new IntersectionObserver((entries) => {
+    // 1. Reveal Observer for smooth entrance animations
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -47,10 +47,23 @@ function Home() {
           entry.target.classList.remove('visible');
         }
       });
-    }, observerOptions);
+    }, { rootMargin: '50px 0px 50px 0px', threshold: 0.05 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // 2. Scroll Focus Observer: Activates motions & highlights when scrolling up or down
+    const focusObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-focus');
+        } else {
+          entry.target.classList.remove('in-focus');
+        }
+      });
+    }, { rootMargin: '-20% 0px -20% 0px', threshold: 0.1 });
+
+    document.querySelectorAll('.glass-card, .service-card, .project-card, .team-card, .stat-item, .hero-logo-lockup').forEach(el => focusObserver.observe(el));
+
     let ticking = false;
     const handleMouseMove = (e) => {
       if (!ticking) {
@@ -70,7 +83,8 @@ function Home() {
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
-      observer.disconnect();
+      revealObserver.disconnect();
+      focusObserver.disconnect();
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
