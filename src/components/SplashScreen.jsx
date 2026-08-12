@@ -10,8 +10,8 @@ const SplashScreen = ({ finishLoading }) => {
       setIsFading(true);
       setTimeout(() => {
         finishLoading();
-      }, 400);
-    }, 600);
+      }, 300);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [finishLoading]);

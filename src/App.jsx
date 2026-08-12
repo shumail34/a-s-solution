@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
 const Solutions = lazy(() => import('./pages/Solutions'));
 
 const RouteLoader = () => (
