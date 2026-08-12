@@ -327,6 +327,12 @@ html {
   }
 }
 
+@media (hover: none) {
+  .hero-image-wrapper.visible .hero-main-globe {
+    animation: spinGlobe 12s linear infinite;
+  }
+}
+
 @keyframes spinGlobe {
   0% { transform: rotate(0deg) scale(1.02); }
   100% { transform: rotate(360deg) scale(1.02); }
