@@ -351,6 +351,7 @@ html {
     justify-content: center;
     width: 100%;
     margin-top: -10px;
+    padding-right: 0;
   }
   .hero-logo-lockup {
     flex-direction: column;
