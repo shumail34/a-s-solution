@@ -331,6 +331,38 @@ html {
   .hero-image-wrapper.visible .hero-main-globe {
     animation: spinGlobe 12s linear infinite;
   }
+
+  .glass-card.visible,
+  .glass-card:active {
+    border-color: rgba(192, 130, 81, 0.4) !important;
+    box-shadow: 0 12px 35px rgba(192, 130, 81, 0.15), inset 0 0 20px rgba(192, 130, 81, 0.05) !important;
+  }
+
+  .service-card.visible .service-image-container,
+  .service-card:active .service-image-container {
+    border-color: rgba(192, 130, 81, 0.8);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5), 0 0 25px rgba(192, 130, 81, 0.3);
+  }
+
+  .service-card.visible .service-image,
+  .service-card:active .service-image {
+    transform: scale(1.08);
+    filter: brightness(1) contrast(1.1);
+  }
+
+  .project-card.visible .thumbnail-video {
+    opacity: 1;
+  }
+
+  .team-card.visible .team-image img,
+  .team-card:active .team-image img {
+    transform: scale(1.05);
+  }
+
+  .stat-item.visible,
+  .stat-item:active {
+    border-color: rgba(192, 130, 81, 0.4);
+  }
 }
 
 @keyframes spinGlobe {

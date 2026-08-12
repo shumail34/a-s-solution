@@ -4,7 +4,7 @@ function Solutions() {
   const [expandedCard, setExpandedCard] = useState(null);
 
   useEffect(() => {
-    const observerOptions = { rootMargin: '-50px 0px -50px 0px', threshold: 0.01 };
+    const observerOptions = { rootMargin: '0px 0px 0px 0px', threshold: 0.05 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
