@@ -250,6 +250,7 @@ html {
   align-items: center;
   position: relative;
   z-index: 3;
+  padding-right: 5%;
 }
 
 .sphere-glow {
@@ -283,7 +284,7 @@ html {
 
 .hero-main-globe {
   width: 100%;
-  max-width: 200px;
+  max-width: 320px;
   height: auto;
   object-fit: contain;
   border-radius: 50%;
@@ -300,7 +301,7 @@ html {
 }
 
 .hero-logo-line1 {
-  font-size: 2.2rem;
+  font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: 1px;
   background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
@@ -311,7 +312,7 @@ html {
 }
 
 .hero-logo-line2 {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 5px;
   color: var(--primary);
