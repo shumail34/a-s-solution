@@ -6,13 +6,12 @@ const SplashScreen = ({ finishLoading }) => {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    // Keep it on screen for a minimum duration to look professional
     const timer = setTimeout(() => {
       setIsFading(true);
       setTimeout(() => {
         finishLoading();
-      }, 600); // 600ms fade out transition
-    }, 2000); // 2 second display
+      }, 400);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, [finishLoading]);
@@ -21,7 +20,7 @@ const SplashScreen = ({ finishLoading }) => {
     <div className={`splash-screen ${isFading ? 'fade-out' : ''}`}>
       <div className="splash-content">
         <div className="splash-logo-container">
-          <img src={logo} alt="A&S Solutions" className="splash-logo" />
+          <img src={logo} alt="A&S Solutions" className="splash-logo" width="160" height="160" fetchPriority="high" decoding="async" />
         </div>
         <div className="splash-loader">
           <div className="splash-loader-bar"></div>

@@ -14,7 +14,7 @@ function LazyVideo({ src, ...props }) {
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' }
+      { rootMargin: '50px' }
     );
 
     if (videoRef.current) {
@@ -28,7 +28,7 @@ function LazyVideo({ src, ...props }) {
     <video
       ref={videoRef}
       src={isInView ? `${src}#t=0.1` : undefined}
-      preload="metadata"
+      preload="none"
       {...props}
     />
   );
