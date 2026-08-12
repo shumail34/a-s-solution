@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+  transition: opacity 0.25s cubic-bezier(0.8, 0, 0.2, 1);
   /* Apply subtle grid background */
   background-image: 
     linear-gradient(rgba(28, 25, 24, 0.95), rgba(21, 19, 18, 0.98)),
@@ -21,6 +21,7 @@
 .splash-screen.fade-out {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .splash-content {

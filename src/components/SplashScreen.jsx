@@ -8,10 +8,11 @@ const SplashScreen = ({ finishLoading }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsFading(true);
-      setTimeout(() => {
+      const unmountTimer = setTimeout(() => {
         finishLoading();
-      }, 200);
-    }, 100);
+      }, 250);
+      return () => clearTimeout(unmountTimer);
+    }, 10);
 
     return () => clearTimeout(timer);
   }, [finishLoading]);
