@@ -352,21 +352,21 @@ function NativeHeroVideo({ src, className }) {
 
         <div className="container hero-wrapper">
           <div className="hero-content">
-            <div className="badge reveal visible">Future of Digital Systems</div>
-            <h1 className="hero-title reveal stagger-1 visible">
+            <div className="badge">Future of Digital Systems</div>
+            <h1 className="hero-title">
               Build. <span className="gradient-text animated-gradient">Automate.</span> Scale.
             </h1>
-            <p className="hero-subtitle reveal stagger-2 visible">
+            <p className="hero-subtitle">
               A&S Solutions is a technology-driven agency specializing in Web Development, AI Integration, 
               and business automation systems.
             </p>
-            <div className="hero-actions reveal stagger-3 visible">
+            <div className="hero-actions">
               <Link to="/solutions" className="primary-btn pulse-hover">Explore Our Solutions</Link>
               <a href="#work" className="secondary-btn">View Work</a>
             </div>
           </div>
           
-          <div className="hero-image-wrapper reveal stagger-2" ref={heroVisualRef}>
+          <div className="hero-image-wrapper" ref={heroVisualRef}>
             <div className="globe-float-container">
               <div className="hero-logo-lockup">
                 <img src="/hero-globe-transparent.webp" alt="A&S Solution Globe" className="hero-main-globe" width="320" height="320" fetchPriority="high" decoding="async" />
