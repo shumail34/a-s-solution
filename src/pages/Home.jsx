@@ -358,7 +358,6 @@ function NativeHeroVideo({ src, className }) {
                 <img src="/hero-globe-transparent.png" alt="A&S Solution Globe" className="hero-main-globe" />
                 <div className="hero-logo-text">
                   <span className="hero-logo-line1">A&S solution</span>
-                  <span className="hero-logo-line2">AI-POWERED</span>
                 </div>
               </div>
             </div>
