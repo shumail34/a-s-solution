@@ -38,7 +38,7 @@ body::before {
   z-index: -2;
   background-image: 
     linear-gradient(rgba(21, 19, 18, 0.75), rgba(21, 19, 18, 0.85)),
-    url('/tech_agency_background.png');
+    url('/tech_agency_background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
